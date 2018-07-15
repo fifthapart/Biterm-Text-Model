@@ -180,7 +180,7 @@ class BitermModel:
         return doc_probs
     
 if __name__ == '__main__':
-    with open('C:/Users/Ethan Beaman/Documents/vet_forum.txt', encoding='utf-8') as f:
+    with open('C:/Users/Ethan Beaman/Documents/sampletext.txt', encoding='utf-8') as f:
         text = f.read().lower().splitlines()
     with open('C:/Users/Ethan Beaman/Documents/stopwords.txt') as s:
         stop = frozenset(s.read().splitlines())
@@ -189,9 +189,6 @@ if __name__ == '__main__':
         doc = simple_preprocess(txt)
         return [d for d in doc if d not in stop]
     
-    POS = {'NOUN', 'PROPN', 'ADJ', 'VERB', 'ADV'}
-    
-
     preprocessed = [clean(doc) for doc in text]
     topic = BitermModel(preprocessed, ntopics=10, niter=20)
     
